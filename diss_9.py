@@ -27,22 +27,23 @@ def getEggMoves(pokemon):
 # Return a list of these times without the '@' symbol. E.g. ['2pm', '5 pm', '10am']
 def findLetters(sentences):
     # initialize an empty list
-    
+    l = []
 
     # define the regular expression
-    
+    regex = r'@\d{1,2} ?(?:am|pm)'
 
     # loop through each sentence or phrase in sentences
-    pass
+    for sentence in sentences:
 
     # find all the words that match the regular expression in each sentence
-       
+        words = re.findall(regex, sentence)   
 
     # loop through the found words and add the words to your empty list
-
+        for word in words:
+            l.append(word[1:])
 
     #return the list of the last letter of all words that begin or end with a capital letter
-
+    return l
 
 
 def main():
