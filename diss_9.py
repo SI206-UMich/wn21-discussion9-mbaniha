@@ -15,7 +15,13 @@ def getCharmanderLink(soup):
 def getEggMoves(pokemon):
     url = 'https://pokemondb.net/pokedex/'+pokemon
     #add code here
-    
+    r = requests.get(url+'/egg')
+    soup = BeautifulSoup(r.text, 'html.parser')
+    lst = soup.findAll('h2')[1:]
+    result = []
+    for move in lst:
+        result.append(move.text)
+    return result
 
 # Task 3: Create a regex expression that will find all the times that have these formats: @2pm @5 pm @10am
 # Return a list of these times without the '@' symbol. E.g. ['2pm', '5 pm', '10am']
